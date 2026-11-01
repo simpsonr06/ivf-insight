@@ -1,4 +1,4 @@
-# IVF Insight: Clinical Data Analysis, Predictive Modelling and Prospective Temporal Validation of IVF Treatment-Cycle Outcomes
+# IVF Insight: Clinical Data Analysis, Predictive Modelling and Chronological Holdout Evaluation of IVF Treatment-Cycle Outcomes
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
@@ -13,14 +13,14 @@
 
 ## 1. Executive Research Overview
 
-**IVF Insight** is an open-source, fully reproducible scientific investigation examining clinical prognostication in assisted reproductive technology (ART). Utilizing an authoritative clinical cohort of **5,000 candidate treatment cycles** (2010–2025), the study investigates whether clinical, laboratory, and embryological features available at pre-defined clinical milestones provide genuine out-of-sample discriminatory signal for predicting cycle implantation outcomes.
+**IVF Insight** is an open-source scientific investigation with pinned dependencies and documented execution procedures supporting reproducibility in assisted reproductive technology (ART) clinical prognostication. Utilizing an authoritative clinical cohort of **5,000 candidate treatment cycles** (verified egg retrieval dates spanning 2019–2025), the study investigates whether clinical, laboratory, and embryological features available at pre-defined clinical milestones provide genuine out-of-sample discriminatory signal for predicting cycle implantation outcomes.
 
 ### Core Scientific Contributions
 1. **Forensic Dataset Reconciliation:** Reconciled discrepancies between raw Excel (`Dataset Clean.xlsx`, 5,002 rows) and Min-Max normalized CSV formats, identifying and excluding two synthetic boundary rows (rows 5000 and 5001) to recover 5,000 clean clinical observations.
-2. **Deconstruction of the "Conflation Illusion":** Proved that the apparent high full-cycle discrimination ($\text{ROC-AUC} = 0.903$) is an artefact of detecting 1,250 zero-embryo cycle cancellations. In the true post-transfer biological cohort ($N=3,750$), genuine clinical discrimination reaches $\text{ROC-AUC} = 0.728$.
-3. **Deconstruction of the "Female Age Paradox":** Unmasked that the counterintuitive positive multivariable logistic regression coefficient for female age ($\text{OR} = 1.358$, $95\%$ CI: $[1.222, 1.509]$) is driven by **reciprocal suppression with male partner age** ($r = 0.526$), severe conditioning on reaching transfer, and potential unrecorded donor oocyte utilization in older women.
-4. **Prospective Temporal Validation & Calibration Drift:** Evaluated models across a strict prospective chronological cutoff (`2024-01-01`), discovering a substantial temporal prevalence surge ($61.8\% \rightarrow 78.7\%$) that induces systematic underconfidence ($\text{CITL} = +0.9371$, $E/O = 0.7971$).
-5. **Standardized Feature Governance:** Clarified that surplus cryopreservation (`frezzing`) is an **integer count** (0–25, median 0) and the primary prognostic driver ($\text{OR} = 2.408$, Gini importance 0.341), while barring target leakage from $\beta$-HCG.
+2. **Differentiation of Full-Cycle and Post-Transfer Cohorts:** Demonstrated that the high full-cycle discrimination ($\text{ROC-AUC} = 0.903$) is substantially influenced by the inclusion of 1,250 non-transfer cycles (cancellations and zero-embryo outcomes). In the transfer-only cohort ($N=3,750$), where all patients received an embryo transfer, clinical discrimination is more moderate ($\text{ROC-AUC} = 0.728$).
+3. **Investigation of the Multivariable Female Age Association:** In multivariable logistic regression on the transfer cohort, Female Age exhibited a counterintuitive positive association ($\text{OR} = 1.358$, $95\%$ CI: $[1.222, 1.509]$). Stepwise modeling revealed that adjusting for correlated male partner age ($r = 0.526$, $\text{OR} = 0.753$) substantially amplified the female age coefficient, consistent with reciprocal statistical suppression. Potential non-causal contributing factors include selection on reaching embryo transfer and unrecorded donor-oocyte utilization in older patients, rather than a genuine biological advantage of advanced maternal age.
+4. **Chronological Holdout Evaluation & Calibration Drift:** Evaluated models across a strict chronological holdout cutoff (`2024-01-01`), discovering a substantial temporal prevalence surge ($61.8\% \rightarrow 78.7\%$) that induces systematic underconfidence ($\text{CITL} = +0.9371$, $E/O = 0.7971$).
+5. **Standardized Feature Governance:** Clarified that the dataset variable `frezzing` is an **integer count** (values 0–25, median 0). While its exact clinical cryopreservation protocol remains unrecorded in the source dataset, it was the strongest multivariable predictive feature in the exploratory model ($\text{OR} = 2.408$, Gini importance 0.341), while target leakage from $\beta$-HCG was strictly barred.
 
 ---
 
@@ -30,9 +30,9 @@
 | :--- | :--- | :--- | :--- |
 | **$Q_1$** | How do raw Excel and normalized CSV representations diverge, and how can data hygiene be restored? | Order-agnostic hashing, schema reconciliation, and boundary audit. | Excluded 2 synthetic normalization rows; sanitized attempt encoding; barred normalized CSV from predictive modeling. |
 | **$Q_2$** | What is the incremental prognostic value across successive clinical decision milestones? | Milestone-based scenario progression: Baseline (4 feats) $\rightarrow$ Post-Retrieval (8 feats) $\rightarrow$ Pre-Transfer (14 feats). | In the Transfer Cohort, ROC-AUC increases incrementally: $0.674 \rightarrow 0.691 \rightarrow 0.728$. |
-| **$Q_3$** | Does out-of-sample performance persist under strict prospective chronological holdout validation? | Chronological split at `2024-01-01` (Historical Train: 2,719; Prospective Holdout: 1,031). | Performance remains stable across alternative cutoffs (`2023-01-01` to `2024-07-01`; AUC $0.709$–$0.750$). |
-| **$Q_4$** | Does prospective temporal drift distort baseline risk and model calibration? | Harrell/Cox logistic recalibration, CITL offset derivation, PSI metrics. | Severe baseline calibration drift: $\text{CITL} = +0.9371$; average predicted risk was $62.7\%$ vs $78.7\%$ observed. |
-| **$Q_5$** | What multivariable mechanisms explain the counterintuitive associations of age and surplus embryos? | Hierarchically nested regression models, suppression diagnostics, restricted cubic splines, VIF audits. | Suppression with male age ($r=0.526$) and transfer selection explains female age coefficient; fertilized eggs has high collinearity ($\text{VIF} = 11.14$). |
+| **$Q_3$** | Does out-of-sample performance persist under strict chronological holdout evaluation? | Chronological split at `2024-01-01` (Historical Train: 2,719; Holdout Test: 1,031). | Performance remains stable across alternative cutoffs (`2023-01-01` to `2024-07-01`; AUC $0.709$–$0.750$). |
+| **$Q_4$** | Does temporal drift distort baseline risk and model calibration across chronological partitions? | Harrell/Cox logistic recalibration, CITL offset derivation, PSI metrics. | Severe baseline calibration drift: $\text{CITL} = +0.9371$; average predicted risk was $62.7\%$ vs $78.7\%$ observed. |
+| **$Q_5$** | What multivariable mechanisms explain the counterintuitive associations of age and surplus embryos? | Hierarchically nested regression models, suppression diagnostics, restricted cubic splines, VIF audits. | Adjusting for male partner age ($r = 0.526$) amplifies the female age coefficient (consistent with reciprocal suppression), with transfer selection and potential unrecorded donor oocytes evaluated as non-causal explanatory hypotheses; fertilized eggs has high collinearity ($\text{VIF} = 11.14$). |
 
 ---
 
@@ -41,7 +41,7 @@
 ### Dataset Provenance
 - **Primary Source:** Maghdid, S., Rashid, T. A., & Askar, S. (2026). *Comprehensive Dataset Profile of In Vitro Fertilization (IVF) Clinical and Embryological Data*. Mendeley Data, Version 1. [DOI: 10.17632/hd8yy6gzc5.1](https://doi.org/10.17632/hd8yy6gzc5.1).
 - **Licence:** Creative Commons Attribution 4.0 International ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
-- **Origin:** Single private fertility center in Erbil, Kurdistan Region of Iraq (treatment cycles initiated 2010–2025).
+- **Origin:** Single private fertility center in Erbil, Kurdistan Region of Iraq (verified egg retrieval records spanning January 2019 to June 2025).
 
 ### Analytical Cohort Definitions
 - **Full-Cycle Cohort ($N=5,000$):** All initiated IVF/ICSI cycles. Outcome distribution: 2,508 Class 0 ($50.16\%$) vs 2,492 Class 1 ($49.84\%$). Contains 1,250 cancelled cycles where no embryos were transferred.
@@ -50,11 +50,11 @@
 
 ---
 
-## 4. Chronological Validation & Model Performance
+## 4. Chronological Holdout Evaluation & Model Performance
 
-### Prospective Model Performance (Holdout Cutoff: `2024-01-01`)
+### Chronological Holdout Performance (Holdout Cutoff: `2024-01-01`)
 
-Evaluated on unseen prospective holdout cycles ($N=1,031$ in Embryo-Transfer Cohort; $N=1,458$ in Full-Cycle Cohort). Metrics reported with $95\%$ bootstrap confidence intervals:
+Evaluated on unseen chronological holdout cycles ($N=1,031$ in Embryo-Transfer Cohort; $N=1,458$ in Full-Cycle Cohort). Metrics reported with $95\%$ bootstrap confidence intervals:
 
 | Cohort Partition | Prediction Scenario | Model Architecture | ROC-AUC [95% CI] | PR-AUC [95% CI] | Balanced Accuracy | Brier Score |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -68,13 +68,13 @@ Evaluated on unseen prospective holdout cycles ($N=1,031$ in Embryo-Transfer Coh
 | Full-Cycle | Scenario C (Pre-Transfer) | Logistic Regression | 0.852 [0.832, 0.871] | 0.858 [0.836, 0.880] | 78.4% | 0.158 |
 | Full-Cycle | Scenario C (Pre-Transfer) | Random Forest | 0.903 [0.886, 0.918]* | 0.914 [0.896, 0.931] | 79.7% | 0.138 |
 
-*\*Note: The Full-Cycle 0.903 ROC-AUC is driven by detecting cycle cancellations with 0 transferred embryos (Conflation Illusion).*
+*\*Note: The Full-Cycle 0.903 ROC-AUC is substantially influenced by the inclusion of non-transfer cycles with zero transferred embryos, whereas transfer-only discrimination is more moderate (ROC-AUC 0.728).*
 
 ### Standardized Multivariable Odds Ratios (Transfer Scenario C)
 Estimated via `statsmodels.Logit` on standardized historical training data ($N=2,719$):
-- **Surplus Frozen Embryos (`frezzing`):** $\text{OR} = 2.408$ ($95\%$ CI: $[2.022, 2.868]$, $p < 0.0001$)
+- **Dataset Variable `frezzing`:** $\text{OR} = 2.408$ ($95\%$ CI: $[2.022, 2.868]$, $p < 0.0001$) — *strongest multivariable predictive feature (integer count 0–25; exact clinical vitrification protocol unverified in source records)*
 - **Fertilized Oocytes (`Number of fertilized eggs`):** $\text{OR} = 1.583$ ($95\%$ CI: $[1.159, 2.162]$, $p = 0.0039$)
-- **Female Age (`Female Age`):** $\text{OR} = 1.358$ ($95\%$ CI: $[1.222, 1.509]$, $p < 0.0001$) — *suppression artifact*
+- **Female Age (`Female Age`):** $\text{OR} = 1.358$ ($95\%$ CI: $[1.222, 1.509]$, $p < 0.0001$) — *positive multivariable association observed after adjusting for male partner age; evaluated as potential statistical suppression, transfer conditioning, or unrecorded donor-oocyte utilization*
 - **Transferred Embryos (`Number of embryos`):** $\text{OR} = 1.264$ ($95\%$ CI: $[1.154, 1.384]$, $p < 0.0001$)
 - **Male Partner Age (`Male Age`):** $\text{OR} = 0.753$ ($95\%$ CI: $[0.675, 0.841]$, $p < 0.0001$)
 
@@ -117,7 +117,7 @@ ivf-insight/
 │   ├── reconciliation.py              # Phase 1 dataset reconciliation and boundary filtering
 │   ├── governance.py                  # Phase 2 feature registry and scenario governance
 │   ├── eda.py                         # Phase 3 exploratory data analysis and FDR testing
-│   ├── experiments.py                 # Phase 4 prospective predictive modeling pipeline
+│   ├── experiments.py                 # Phase 4 chronological holdout predictive modeling pipeline
 │   ├── validation.py                  # Phase 5 temporal drift and sensitivity audits
 │   ├── integrity_audit.py             # Phase 5.1 multicollinearity and suppression audit
 │   └── report.py                      # Phase 6 academic report and PDF compiler
@@ -194,12 +194,12 @@ python -m pytest -v
 
 ## 7. Key Research Findings & Interpretive Guidelines
 
-1. **Surplus Embryos Vitrified (`frezzing`) is the Dominant Predictor:**
-   - Cryopreserving surplus embryos is the single strongest multivariate signal ($\text{OR} = 2.408$; Gini importance $0.341$). It reflects biological cohort competence where couples produce multiple high-grade blastocysts/embryos beyond the immediate transfer requirement.
+1. **Dataset Variable `frezzing` is the Strongest Multivariable Feature:**
+   - The dataset variable `frezzing` (integer values 0–25) was the single strongest multivariable predictive feature in the exploratory model ($\text{OR} = 2.408$; Gini importance $0.341$). Although the source documentation does not verify the exact clinical protocol or timing of embryo cryopreservation (whether Day 3 cleavage or Day 5 blastocyst vitrification), it likely serves as an unmeasured proxy for overall embryological cohort quality.
 2. **True Clinical Discrimination is Moderate:**
    - While pre-transfer discrimination in the transfer cohort reaches $\text{ROC-AUC} = 0.728$, standard routine clinical features alone cannot perfectly determine implantation. Unmeasured variables (endometrial receptivity, embryo euploidy, transfer technique) account for remaining variance.
 3. **Temporal Drift Causes Severe Model Underconfidence:**
-   - In prospective clinical deployment, baseline prevalence shifted from $61.8\%$ to $78.7\%$. Models trained on historical data systematically underestimated success probabilities by $20\%$ ($\text{CITL} = +0.9371$). Models deployed across multi-year intervals require continuous recalibration.
+   - In chronological holdout evaluation, baseline prevalence shifted from $61.8\%$ to $78.7\%$. Models trained on historical data systematically underestimated success probabilities by $20\%$ ($\text{CITL} = +0.9371$). Models deployed across multi-year intervals require continuous recalibration.
 4. **Extreme Observations Have Minimal Influence:**
    - Three patient records had extreme $\text{AMH} = 482.1$ (unit not specified in source dataset). Retaining vs winsorizing these records resulted in negligible metric shifts ($\Delta \text{AUC} = -0.0013$), demonstrating tree-based and rank-based robustness.
 
@@ -223,7 +223,7 @@ If you utilize this codebase, analytical methodologies, or findings, please cite
 ```bibtex
 @misc{simpson2026ivfinsight,
   author = {Simpson, R.},
-  title = {IVF Insight: Exploratory Clinical Data Analysis, Predictive Modelling and Temporal Validation of IVF Treatment-Cycle Outcomes},
+  title = {IVF Insight: Exploratory Clinical Data Analysis, Predictive Modelling and Chronological Holdout Evaluation of IVF Treatment-Cycle Outcomes},
   year = {2026},
   publisher = {GitHub},
   howpublished = {\url{https://github.com/your-username/ivf-insight}},

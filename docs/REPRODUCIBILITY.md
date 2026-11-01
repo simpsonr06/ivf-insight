@@ -9,7 +9,7 @@ This document provides complete, step-by-step instructions for establishing the 
 The analytical pipeline is operating-system agnostic and verified on:
 - **Operating Systems:** Microsoft Windows 10/11 (PowerShell 5.1+ / 7+), Ubuntu 22.04 LTS, macOS Sonoma.
 - **Python Version:** Python 3.10, 3.11, or 3.12 (developed and audited on Python 3.12).
-- **RAM:** Minimum 8 GB (16 GB recommended for bootstrap resampling, five-fold stratified cross-validation on training data, and prospective chronological validation).
+- **RAM:** Minimum 8 GB (16 GB recommended for bootstrap resampling, five-fold stratified cross-validation on training data, and chronological holdout evaluation).
 - **Disk Space:** ~500 MB (excluding virtual environment).
 - **PDF Compilation Engine (Optional):** Microsoft Edge (`msedge.exe`) or Google Chrome (`chrome.exe`) for headless PDF compilation of the monograph report.
 
@@ -116,7 +116,7 @@ ivf-insight report --output-dir reports
 
 ## 5. Automated Test Suite Execution
 
-The automated test suite verifies dataset reconciliation boundaries, feature governance registries, prospective chronological splits, pipeline leakage prevention, statistical integrity audits, and odds ratio derivations.
+The automated test suite verifies dataset reconciliation boundaries, feature governance registries, chronological holdout splits, pipeline leakage prevention, statistical integrity audits, and odds ratio derivations.
 
 Run the complete test suite:
 ```bash
@@ -150,11 +150,11 @@ jupyter notebook
 
 ## 7. Deterministic Seeds & Hyperparameter Configuration
 
-All pseudo-random operations use explicit random seeds to ensure exact reproducibility across machines:
+All pseudo-random operations use explicit random seeds to support numerical reproducibility across supported environments:
 
 - **Primary Random Seed:** `42` (used for scikit-learn models, StratifiedKFold cross-validation, and bootstrap resampling).
 - **Secondary Sensitivity Seeds:** `100` to `109` (used for multi-seed stability evaluations in Phase 5).
-- **Chronological Cutoff Boundary:** `2024-01-01` (primary prospective validation split).
+- **Chronological Cutoff Boundary:** `2024-01-01` (primary chronological holdout split).
 - **Alternative Chronological Cutoffs:** `2023-01-01` and `2024-07-01` (sensitivity analyses).
 - **Random Forest Hyperparameters:** `n_estimators=300`, `max_depth=8`, `min_samples_split=10`, `min_samples_leaf=4`, `class_weight='balanced'`, `random_state=42`.
 - **Logistic Regression Hyperparameters:** `C=1.0`, `penalty='l2'`, `solver='lbfgs'`, `class_weight='balanced'`, `max_iter=1000`, `random_state=42`.
