@@ -227,7 +227,7 @@ If you utilize this codebase, analytical methodologies, or findings, please cite
   year = {2026},
   publisher = {GitHub},
   howpublished = {\url{https://github.com/simpsonr06/ivf-insight}},
-  note = {Version 0.1.0}
+  note = {Version 1.0.0}
 }
 
 @misc{maghdid2026ivf,

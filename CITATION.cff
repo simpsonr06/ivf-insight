@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "If you utilize this codebase or research findings in your research, please cite both the software repository and the underlying source dataset."
 title: "IVF Insight: Exploratory Clinical Data Analysis, Predictive Modelling and Temporal Validation of IVF Treatment-Cycle Outcomes"
-version: 0.1.0
+version: 1.0.0
 date-released: 2026-11-01
 license: MIT
 authors:
   - family-names: "R"
     given-names: "Simpson"
-repository-code: "https://github.com/your-username/ivf-insight"
+repository-code: "https://github.com/simpsonr06/ivf-insight"
 abstract: "A rigorous, reproducible clinical data science and machine learning investigation into assisted reproductive technology (ART) cycle outcomes using an authoritative cohort of 5,000 candidate treatment cycles. Incorporates strict chronological holdout evaluation (2024-01-01 cutoff), milestone-based feature governance, multivariable odds ratio estimation, canonical calibration auditing, and evaluation of full-cycle versus transfer-only cohort dynamics and Female Age suppression effects."
 keywords:
   - "in-vitro-fertilization"
