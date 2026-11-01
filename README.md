@@ -13,7 +13,7 @@
 
 ## 1. Executive Research Overview
 
-**IVF Insight** is an open-source scientific investigation with pinned dependencies and documented execution procedures supporting reproducibility in assisted reproductive technology (ART) clinical prognostication. Utilizing an authoritative clinical cohort of **5,000 candidate treatment cycles** (verified egg retrieval dates spanning 2019–2025), the study investigates whether clinical, laboratory, and embryological features available at pre-defined clinical milestones provide genuine out-of-sample discriminatory signal for predicting cycle implantation outcomes.
+**IVF Insight** is an open-source scientific investigation with pinned dependencies and documented execution procedures supporting reproducibility in retrospective exploratory data analysis and predictive modelling of assisted reproductive technology (ART) treatment-cycle outcomes. Utilizing an authoritative clinical cohort of **5,000 candidate treatment cycles** (verified egg retrieval dates spanning 2019–2025), the study investigates whether clinical, laboratory, and embryological features available at pre-defined clinical milestones provide genuine out-of-sample discriminatory signal for predicting the binary treatment outcome (standardized as `recorded_cycle_outcome`).
 
 ### Core Scientific Contributions
 1. **Forensic Dataset Reconciliation:** Reconciled discrepancies between raw Excel (`Dataset Clean.xlsx`, 5,002 rows) and Min-Max normalized CSV formats, identifying and excluding two synthetic boundary rows (rows 5000 and 5001) to recover 5,000 clean clinical observations.
@@ -107,7 +107,7 @@ ivf-insight/
 │   ├── IVF_Insight_Research_Report.pdf # Typeset academic publication monograph (16 pages)
 │   ├── references.bib                 # BibTeX bibliographic database (15 verified citations)
 │   ├── report_figure_manifest.csv     # Index of 18 diagnostic research figures
-│   ├── report_data_manifest.csv       # Index of 20 structured analytical CSV tables
+│   ├── report_data_manifest.csv       # Index of 20 structured report tables (21 tracked CSVs: 19 analytical result CSVs, 1 figure manifest, and 1 report-data manifest)
 │   ├── figures/                       # EDA and demographic distribution figures
 │   ├── model_figures/                 # ROC, PR, calibration, and feature importance plots
 │   ├── robustness_figures/            # Temporal drift, cubic splines, and VIF plots
@@ -140,7 +140,7 @@ ivf-insight/
 
 ### Installation
 ```bash
-git clone https://github.com/your-username/ivf-insight.git
+git clone https://github.com/simpsonr06/ivf-insight.git
 cd ivf-insight
 
 python -m venv .venv
@@ -195,11 +195,11 @@ python -m pytest -v
 ## 7. Key Research Findings & Interpretive Guidelines
 
 1. **Dataset Variable `frezzing` is the Strongest Multivariable Feature:**
-   - The dataset variable `frezzing` (integer values 0–25) was the single strongest multivariable predictive feature in the exploratory model ($\text{OR} = 2.408$; Gini importance $0.341$). Although the source documentation does not verify the exact clinical protocol or timing of embryo cryopreservation (whether Day 3 cleavage or Day 5 blastocyst vitrification), it likely serves as an unmeasured proxy for overall embryological cohort quality.
-2. **True Clinical Discrimination is Moderate:**
-   - While pre-transfer discrimination in the transfer cohort reaches $\text{ROC-AUC} = 0.728$, standard routine clinical features alone cannot perfectly determine implantation. Unmeasured variables (endometrial receptivity, embryo euploidy, transfer technique) account for remaining variance.
+   - The dataset variable `frezzing` (integer values 0–25) was the single strongest multivariable predictive feature in the exploratory model ($\text{OR} = 2.408$; Gini importance $0.341$). Because the source dataset does not document the underlying clinical cryopreservation protocol or timing (e.g., Day 3 cleavage vs Day 5 blastocyst vitrification), it must be interpreted strictly as an exploratory predictive feature whose exact clinical meaning remains unverified.
+2. **Transfer-Cohort Predictive Discrimination is Moderate:**
+   - While pre-transfer discrimination in the transfer cohort reaches $\text{ROC-AUC} = 0.728$, standard routine clinical features alone cannot perfectly determine `recorded_cycle_outcome`. Unmeasured clinical and biological variables may contribute to the remaining unexplained variation.
 3. **Temporal Drift Causes Severe Model Underconfidence:**
-   - In chronological holdout evaluation, baseline prevalence shifted from $61.8\%$ to $78.7\%$. Models trained on historical data systematically underestimated success probabilities by $20\%$ ($\text{CITL} = +0.9371$). Models deployed across multi-year intervals require continuous recalibration.
+   - In chronological holdout evaluation, baseline prevalence shifted from $61.8\%$ to $78.7\%$. Models trained on historical data showed underprediction in the chronological holdout (CITL = +0.9371; E/O = 0.7971). Because clinical practice and baseline prevalence can evolve over time, clinical models require ongoing temporal calibration monitoring, with formal recalibration evaluated where appropriate.
 4. **Extreme Observations Have Minimal Influence:**
    - Three patient records had extreme $\text{AMH} = 482.1$ (unit not specified in source dataset). Retaining vs winsorizing these records resulted in negligible metric shifts ($\Delta \text{AUC} = -0.0013$), demonstrating tree-based and rank-based robustness.
 
@@ -226,7 +226,7 @@ If you utilize this codebase, analytical methodologies, or findings, please cite
   title = {IVF Insight: Exploratory Clinical Data Analysis, Predictive Modelling and Chronological Holdout Evaluation of IVF Treatment-Cycle Outcomes},
   year = {2026},
   publisher = {GitHub},
-  howpublished = {\url{https://github.com/your-username/ivf-insight}},
+  howpublished = {\url{https://github.com/simpsonr06/ivf-insight}},
   note = {Version 0.1.0}
 }
 
