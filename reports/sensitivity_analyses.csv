@@ -1,0 +1,10 @@
+Sensitivity_Domain,Specification,N_Train,N_Holdout,Features_Count,ROC_AUC,PR_AUC,Balanced_Accuracy,Brier_Score
+Baseline Benchmark,"Full Scenario C (All 14 Features, All Records)",2719,1031,14,0.7275,0.8917,0.6729,0.1795
+AMH Extreme Outlier Sensitivity,Exclude Extreme AMH = 482.1 Records (N=3 removed),2717,1030,14,0.7262,0.8879,0.6744,0.18
+Feature Ablation (LOFO),Scenario C excluding 'frezzing',2719,1031,13,0.7334,0.9011,0.6409,0.1729
+Feature Ablation (LOFO),Scenario C excluding 'Number of embryos',2719,1031,13,0.6946,0.8749,0.642,0.1863
+Feature Ablation (LOFO),Scenario C excluding 'Number of fertilized eggs',2719,1031,13,0.7258,0.8854,0.6752,0.1795
+Feature Ablation (LOFO),Scenario C excluding 'Embryo Grade 1',2719,1031,13,0.7273,0.8912,0.6799,0.1772
+Feature Ablation (LOFO),Scenario C excluding 'Oocyte Maturity MII',2719,1031,13,0.7252,0.8924,0.6688,0.1803
+Feature Ablation (LOFO),Scenario C excluding 'Male Age',2719,1031,13,0.7228,0.8784,0.6708,0.1823
+Feature Ablation (LOFO),Scenario C excluding 'Female Age',2719,1031,13,0.72,0.8819,0.6719,0.1834

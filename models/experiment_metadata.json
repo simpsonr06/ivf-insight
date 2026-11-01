@@ -1,0 +1,24 @@
+{
+  "dataset_source": "data/raw/Dataset Clean.xlsx",
+  "cutoff_date": "2024-01-01",
+  "total_experiments": 18,
+  "cohorts": [
+    "Full-Cycle Cohort",
+    "Embryo-Transfer Cohort"
+  ],
+  "scenarios": [
+    "Scenario A (Baseline)",
+    "Scenario B (Post-Retrieval)",
+    "Scenario C (Pre-Transfer)"
+  ],
+  "models": [
+    "Majority Baseline",
+    "Logistic Regression",
+    "Random Forest"
+  ],
+  "metrics_csv": "reports\\model_metrics.csv",
+  "report_md": "reports\\model_comparison.md",
+  "figures_count": 8,
+  "confusion_matrices_count": 18,
+  "warning": "Educational research only. Not validated for clinical decision-making."
+}

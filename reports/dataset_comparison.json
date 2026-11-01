@@ -1,0 +1,983 @@
+{
+  "summary": {
+    "excel_rows": 5002,
+    "csv_rows": 5000,
+    "row_count_diff": 2,
+    "excel_cols": 21,
+    "csv_cols": 21,
+    "excel_missing_total": 6,
+    "csv_missing_total": 0,
+    "excel_exact_duplicates": 0,
+    "csv_exact_duplicates": 5,
+    "boundary_rows_detected": [
+      5000,
+      5001
+    ],
+    "multiset_order_agnostic_match": true,
+    "recommendation": "RECOMMENDATION: Use 'data/raw/Dataset Clean.xlsx' (rows 0 to 4999) as the sole authoritative source for subsequent analysis and modeling. Rows 5000 and 5001 must be dropped as they are synthetic min-max boundary rows. 'Normalized CSV.csv' must NOT be used because it has suffered severe information degradation: calendar years were stripped from dates (creating 5 artificial duplicate pairs), character encoding was corrupted (\u03b2-HCG -> ?-HCG), 'Non-return of embryos' was silently imputed to 0.0, nominal protocol codes were improperly scaled as continuous metrics, and global min-max scaling was baked in prior to train-test splitting."
+  },
+  "schema_comparison": {
+    "excel_shape": {
+      "rows": 5002,
+      "columns": 21
+    },
+    "csv_shape": {
+      "rows": 5000,
+      "columns": 21
+    },
+    "column_alignment": [
+      {
+        "index": 0,
+        "excel_column": "Female Age",
+        "csv_column": "Female Age",
+        "exact_name_match": true
+      },
+      {
+        "index": 1,
+        "excel_column": "Number of attempts",
+        "csv_column": "Number of attempts",
+        "exact_name_match": true
+      },
+      {
+        "index": 2,
+        "excel_column": "AMH",
+        "csv_column": "AMH",
+        "exact_name_match": true
+      },
+      {
+        "index": 3,
+        "excel_column": "Medicines and treatments",
+        "csv_column": "Medicines and treatments",
+        "exact_name_match": true
+      },
+      {
+        "index": 4,
+        "excel_column": "Egg retrieval date",
+        "csv_column": "Egg retrieval date",
+        "exact_name_match": true
+      },
+      {
+        "index": 5,
+        "excel_column": "Oocyte Maturity MII",
+        "csv_column": "Oocyte Maturity MII",
+        "exact_name_match": true
+      },
+      {
+        "index": 6,
+        "excel_column": "Oocyte Maturity MI",
+        "csv_column": "Oocyte Maturity MI",
+        "exact_name_match": true
+      },
+      {
+        "index": 7,
+        "excel_column": "Oocyte Maturity others",
+        "csv_column": "Oocyte Maturity others",
+        "exact_name_match": true
+      },
+      {
+        "index": 8,
+        "excel_column": "Male Age",
+        "csv_column": "Male Age",
+        "exact_name_match": true
+      },
+      {
+        "index": 9,
+        "excel_column": "Sperm count",
+        "csv_column": "Sperm count",
+        "exact_name_match": true
+      },
+      {
+        "index": 10,
+        "excel_column": "Sperm motility",
+        "csv_column": "Sperm motility",
+        "exact_name_match": true
+      },
+      {
+        "index": 11,
+        "excel_column": "Sperm morphology",
+        "csv_column": "Sperm morphology",
+        "exact_name_match": true
+      },
+      {
+        "index": 12,
+        "excel_column": "Number of fertilized eggs",
+        "csv_column": "Number of fertilized eggs",
+        "exact_name_match": true
+      },
+      {
+        "index": 13,
+        "excel_column": "Embryo Grade 1",
+        "csv_column": "Embryo Grade 1",
+        "exact_name_match": true
+      },
+      {
+        "index": 14,
+        "excel_column": "Embryo Grade 2",
+        "csv_column": "Embryo Grade 2",
+        "exact_name_match": true
+      },
+      {
+        "index": 15,
+        "excel_column": "Embryo Grade 3",
+        "csv_column": "Embryo Grade 3",
+        "exact_name_match": true
+      },
+      {
+        "index": 16,
+        "excel_column": "Embryo Grade 4",
+        "csv_column": "Embryo Grade 4",
+        "exact_name_match": true
+      },
+      {
+        "index": 17,
+        "excel_column": "Number of embryos",
+        "csv_column": "Number of embryos",
+        "exact_name_match": true
+      },
+      {
+        "index": 18,
+        "excel_column": "frezzing",
+        "csv_column": "frezzing",
+        "exact_name_match": true
+      },
+      {
+        "index": 19,
+        "excel_column": "\u03b2-HCG",
+        "csv_column": "?-HCG",
+        "exact_name_match": false
+      },
+      {
+        "index": 20,
+        "excel_column": "Output(failed implantation or successful implantation)",
+        "csv_column": "Output (Output(failed implantation or successful implantation)",
+        "exact_name_match": false
+      }
+    ],
+    "excel_columns_metadata": {
+      "Female Age": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 30
+      },
+      "Number of attempts": {
+        "dtype": "object",
+        "null_count": 0,
+        "unique_count": 11
+      },
+      "AMH": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 849
+      },
+      "Medicines and treatments": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 182
+      },
+      "Egg retrieval date": {
+        "dtype": "datetime64[ns]",
+        "null_count": 2,
+        "unique_count": 1400
+      },
+      "Oocyte Maturity MII": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 36
+      },
+      "Oocyte Maturity MI": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 18
+      },
+      "Oocyte Maturity others": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 22
+      },
+      "Male Age": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 39
+      },
+      "Sperm count": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 110
+      },
+      "Sperm motility": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 154
+      },
+      "Sperm morphology": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 27
+      },
+      "Number of fertilized eggs": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 34
+      },
+      "Embryo Grade 1": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 28
+      },
+      "Embryo Grade 2": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 16
+      },
+      "Embryo Grade 3": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 12
+      },
+      "Embryo Grade 4": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 7
+      },
+      "Number of embryos": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 9
+      },
+      "frezzing": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 22
+      },
+      "\u03b2-HCG": {
+        "dtype": "object",
+        "null_count": 2,
+        "unique_count": 1276
+      },
+      "Output(failed implantation or successful implantation)": {
+        "dtype": "float64",
+        "null_count": 2,
+        "unique_count": 2
+      }
+    },
+    "csv_columns_metadata": {
+      "Female Age": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 30
+      },
+      "Number of attempts": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 10
+      },
+      "AMH": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 849
+      },
+      "Medicines and treatments": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 182
+      },
+      "Egg retrieval date": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 665
+      },
+      "Oocyte Maturity MII": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 36
+      },
+      "Oocyte Maturity MI": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 18
+      },
+      "Oocyte Maturity others": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 22
+      },
+      "Male Age": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 39
+      },
+      "Sperm count": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 110
+      },
+      "Sperm motility": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 154
+      },
+      "Sperm morphology": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 27
+      },
+      "Number of fertilized eggs": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 34
+      },
+      "Embryo Grade 1": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 28
+      },
+      "Embryo Grade 2": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 16
+      },
+      "Embryo Grade 3": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 12
+      },
+      "Embryo Grade 4": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 7
+      },
+      "Number of embryos": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 9
+      },
+      "frezzing": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 22
+      },
+      "?-HCG": {
+        "dtype": "float64",
+        "null_count": 0,
+        "unique_count": 1018
+      },
+      "Output (Output(failed implantation or successful implantation)": {
+        "dtype": "int64",
+        "null_count": 0,
+        "unique_count": 2
+      }
+    }
+  },
+  "boundary_rows_investigation": {
+    "boundary_rows_detected": true,
+    "boundary_indices": [
+      5000,
+      5001
+    ],
+    "tail_rows_missing_cell_counts": {
+      "5000": 3,
+      "5001": 3
+    },
+    "min_bounds_verification": {
+      "Female Age": {
+        "patient_data_min": 20.0,
+        "row_5000_value": 20.0,
+        "is_match": true
+      },
+      "Number of attempts": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "AMH": {
+        "patient_data_min": 0.013,
+        "row_5000_value": 0.013,
+        "is_match": true
+      },
+      "Medicines and treatments": {
+        "patient_data_min": 1.0,
+        "row_5000_value": 1.0,
+        "is_match": true
+      },
+      "Oocyte Maturity MII": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Oocyte Maturity MI": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Oocyte Maturity others": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Male Age": {
+        "patient_data_min": 19.0,
+        "row_5000_value": 19.0,
+        "is_match": true
+      },
+      "Sperm count": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Sperm motility": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Sperm morphology": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Number of fertilized eggs": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Embryo Grade 1": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Embryo Grade 2": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Embryo Grade 3": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Embryo Grade 4": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "Number of embryos": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      },
+      "frezzing": {
+        "patient_data_min": 0.0,
+        "row_5000_value": 0.0,
+        "is_match": true
+      }
+    },
+    "max_bounds_verification": {
+      "Female Age": {
+        "patient_data_max": 49.0,
+        "row_5001_value": 49.0,
+        "is_match": true
+      },
+      "Number of attempts": {
+        "patient_data_max": 11.0,
+        "row_5001_value": 11.0,
+        "is_match": true
+      },
+      "AMH": {
+        "patient_data_max": 482.1,
+        "row_5001_value": 482.1,
+        "is_match": true
+      },
+      "Medicines and treatments": {
+        "patient_data_max": 183.0,
+        "row_5001_value": 183.0,
+        "is_match": true
+      },
+      "Oocyte Maturity MII": {
+        "patient_data_max": 52.0,
+        "row_5001_value": 52.0,
+        "is_match": true
+      },
+      "Oocyte Maturity MI": {
+        "patient_data_max": 32.0,
+        "row_5001_value": 32.0,
+        "is_match": true
+      },
+      "Oocyte Maturity others": {
+        "patient_data_max": 65.0,
+        "row_5001_value": 65.0,
+        "is_match": true
+      },
+      "Male Age": {
+        "patient_data_max": 57.0,
+        "row_5001_value": 57.0,
+        "is_match": true
+      },
+      "Sperm count": {
+        "patient_data_max": 115.0,
+        "row_5001_value": 115.0,
+        "is_match": true
+      },
+      "Sperm motility": {
+        "patient_data_max": 89.0,
+        "row_5001_value": 89.0,
+        "is_match": true
+      },
+      "Sperm morphology": {
+        "patient_data_max": 3.0,
+        "row_5001_value": 3.0,
+        "is_match": true
+      },
+      "Number of fertilized eggs": {
+        "patient_data_max": 35.0,
+        "row_5001_value": 35.0,
+        "is_match": true
+      },
+      "Embryo Grade 1": {
+        "patient_data_max": 32.0,
+        "row_5001_value": 32.0,
+        "is_match": true
+      },
+      "Embryo Grade 2": {
+        "patient_data_max": 32.0,
+        "row_5001_value": 32.0,
+        "is_match": true
+      },
+      "Embryo Grade 3": {
+        "patient_data_max": 11.0,
+        "row_5001_value": 11.0,
+        "is_match": true
+      },
+      "Embryo Grade 4": {
+        "patient_data_max": 9.0,
+        "row_5001_value": 9.0,
+        "is_match": true
+      },
+      "Number of embryos": {
+        "patient_data_max": 8.0,
+        "row_5001_value": 8.0,
+        "is_match": true
+      },
+      "frezzing": {
+        "patient_data_max": 25.0,
+        "row_5001_value": 25.0,
+        "is_match": true
+      }
+    },
+    "conclusion": "Rows 5000 and 5001 are synthetic min/max boundary markers constructed to facilitate spreadsheet-level Min-Max scaling. They contain null dates, null beta-HCG, and null outcomes, and must be excluded from patient-level analysis."
+  },
+  "duplicate_audit": {
+    "excel_exact_full_duplicates_total": 0,
+    "excel_exact_full_duplicates_patient_rows": 0,
+    "csv_exact_full_duplicates": 5,
+    "csv_duplicate_row_indices": [
+      1299,
+      1305,
+      1314,
+      1315,
+      1316,
+      4846,
+      4847,
+      4851,
+      4852,
+      4853
+    ],
+    "excel_duplicates_excluding_date": 1474,
+    "csv_duplicate_clusters": [
+      {
+        "csv_indices": [
+          1305,
+          4847
+        ],
+        "excel_dates": [
+          "2019-05-11",
+          "2025-05-11"
+        ],
+        "explanation": "Identical clinical features across all 20 non-date variables; in Excel these records occurred in different years (e.g. 2019 vs 2025) but on the same calendar day, which collapsed into identical fractional values in CSV."
+      },
+      {
+        "csv_indices": [
+          1316,
+          4853
+        ],
+        "excel_dates": [
+          "2019-05-12",
+          "2025-05-12"
+        ],
+        "explanation": "Identical clinical features across all 20 non-date variables; in Excel these records occurred in different years (e.g. 2019 vs 2025) but on the same calendar day, which collapsed into identical fractional values in CSV."
+      },
+      {
+        "csv_indices": [
+          1299,
+          4846
+        ],
+        "excel_dates": [
+          "2019-05-11",
+          "2025-05-11"
+        ],
+        "explanation": "Identical clinical features across all 20 non-date variables; in Excel these records occurred in different years (e.g. 2019 vs 2025) but on the same calendar day, which collapsed into identical fractional values in CSV."
+      },
+      {
+        "csv_indices": [
+          1315,
+          4852
+        ],
+        "excel_dates": [
+          "2019-05-12",
+          "2025-05-12"
+        ],
+        "explanation": "Identical clinical features across all 20 non-date variables; in Excel these records occurred in different years (e.g. 2019 vs 2025) but on the same calendar day, which collapsed into identical fractional values in CSV."
+      },
+      {
+        "csv_indices": [
+          1314,
+          4851
+        ],
+        "excel_dates": [
+          "2019-05-12",
+          "2025-05-12"
+        ],
+        "explanation": "Identical clinical features across all 20 non-date variables; in Excel these records occurred in different years (e.g. 2019 vs 2025) but on the same calendar day, which collapsed into identical fractional values in CSV."
+      }
+    ]
+  },
+  "missingness_and_imputation_audit": {
+    "excel_patient_rows_missing_by_col": {},
+    "excel_boundary_rows_missing_by_col": {
+      "Egg retrieval date": 2,
+      "\u03b2-HCG": 2,
+      "Output(failed implantation or successful implantation)": 2
+    },
+    "csv_missing_by_col": {},
+    "implicit_imputation_investigation": {
+      "clinical_category": "Non-return of embryos",
+      "excel_occurrence_count": 1250,
+      "csv_replacement_values": [
+        0.0
+      ],
+      "is_zero_imputed": true,
+      "clinical_risk": "'Non-return of embryos' indicates no embryo transfer occurred (e.g. cycle cancellation or freeze-all). Replacing this clinical state with 0.0 conflates cycle-cancellation / test omission with a biological zero serum \u03b2-HCG measurement."
+    }
+  },
+  "date_preservation_audit": {
+    "excel_date_range": {
+      "start": "2019-01-02 00:00:00",
+      "end": "2025-06-30 00:00:00",
+      "unique_dates": 1400,
+      "years_represented": {
+        "2019": 1730,
+        "2020": 298,
+        "2021": 411,
+        "2022": 382,
+        "2023": 721,
+        "2024": 952,
+        "2025": 506
+      }
+    },
+    "csv_date_characteristics": {
+      "dtype": "float64",
+      "min": 0.0,
+      "max": 0.99726776,
+      "unique_values": 665
+    },
+    "date_information_loss": {
+      "year_preserved": false,
+      "formula_detected": "(day_of_year - 1) / 365.0 (approximate)",
+      "approximate_match_count": 4992,
+      "unique_dates_lost": 735,
+      "scientific_impact": "CSV conversion stripped the calendar year completely and collapsed dates from 2019 to 2025 into annual fractions. This destroyed longitudinal chronology, prevents seasonal or temporal drift analysis, and created artificial duplicate rows."
+    }
+  },
+  "beta_hcg_audit": {
+    "excel_column_name": "\u03b2-HCG",
+    "csv_column_name": "?-HCG",
+    "encoding_corruption_detected": true,
+    "excel_category_distribution": {
+      "negative": 1249,
+      "positive": 2283,
+      "non_return_of_embryos": 1250,
+      "numeric": 217,
+      "negative_unquantified": 1
+    },
+    "scaling_denominator_detected": 6800.0,
+    "discrepancy_count": 8,
+    "sample_discrepancies": [
+      {
+        "row_index": 731,
+        "excel_raw": "POSITIVE(201)",
+        "excel_parsed_num": 201.0,
+        "csv_value": 0.288970588,
+        "implied_ratio": 695.572519650339,
+        "issue": "Transcription error / alternative scaling factor"
+      },
+      {
+        "row_index": 804,
+        "excel_raw": "POSITIVE(753)",
+        "excel_parsed_num": 753.0,
+        "csv_value": 0.084264706,
+        "implied_ratio": 8936.125641973997,
+        "issue": "Transcription error / alternative scaling factor"
+      },
+      {
+        "row_index": 3036,
+        "excel_raw": "NEGATIVE",
+        "excel_parsed_num": 0.0,
+        "csv_value": 0.003235294,
+        "implied_ratio": 0.0,
+        "issue": "Excel contains unquantified 'NEGATIVE'; CSV contains 22/6800"
+      },
+      {
+        "row_index": 3325,
+        "excel_raw": "POSITIVE (225)",
+        "excel_parsed_num": 225.0,
+        "csv_value": 0.0375,
+        "implied_ratio": 6000.0,
+        "issue": "Transcription error / alternative scaling factor"
+      },
+      {
+        "row_index": 3949,
+        "excel_raw": "POSITIVE(753)",
+        "excel_parsed_num": 753.0,
+        "csv_value": 0.084264706,
+        "implied_ratio": 8936.125641973997,
+        "issue": "Transcription error / alternative scaling factor"
+      },
+      {
+        "row_index": 3969,
+        "excel_raw": "POSITIVE(643)",
+        "excel_parsed_num": 643.0,
+        "csv_value": 0.535735294,
+        "implied_ratio": 1200.21959949497,
+        "issue": "Transcription error / alternative scaling factor"
+      },
+      {
+        "row_index": 4000,
+        "excel_raw": "POSITIVE(643)",
+        "excel_parsed_num": 643.0,
+        "csv_value": 0.535735294,
+        "implied_ratio": 1200.21959949497,
+        "issue": "Transcription error / alternative scaling factor"
+      },
+      {
+        "row_index": 4787,
+        "excel_raw": "POSITIVE(14589)",
+        "excel_parsed_num": 14589.0,
+        "csv_value": 0.218970588,
+        "implied_ratio": 66625.38623680364,
+        "issue": "Transcription error / alternative scaling factor"
+      }
+    ],
+    "conclusion": "The CSV column '?-HCG' suffered character encoding corruption ('\u03b2' replaced with '?'). Values were scaled by dividing by 6800.0. 'Non-return of embryos' was encoded as 0.0. Discrepancies exhibit transcription or scaling discrepancies between Excel and CSV."
+  },
+  "target_audit": {
+    "excel_target_column": "Output(failed implantation or successful implantation)",
+    "csv_target_column": "Output (Output(failed implantation or successful implantation)",
+    "excel_total_counts": {
+      "0.0": 2508,
+      "1.0": 2492,
+      "nan": 2
+    },
+    "excel_patient_counts": {
+      "0": 2508,
+      "1": 2492
+    },
+    "csv_counts": {
+      "0": 2508,
+      "1": 2492
+    },
+    "class_proportions": {
+      "class_0_failed": 0.5016,
+      "class_1_successful": 0.4984
+    },
+    "rows_0_to_4999_identical": true,
+    "header_syntax_note": "CSV target header contains a nested duplication: 'Output (Output(failed implantation or successful implantation)'"
+  },
+  "categorical_and_discrete_audit": {
+    "number_of_attempts": {
+      "excel_dtype": "object",
+      "csv_dtype": "float64",
+      "excel_value_counts": {
+        "1": 4189,
+        "2": 616,
+        "3": 118,
+        "4": 33,
+        "5": 17,
+        "6": 13,
+        "7": 6,
+        "8": 3,
+        "`1": 2,
+        "11": 2,
+        "0": 1
+      },
+      "backtick_typo_detected": true,
+      "typo_detail": "Two records in Excel have string value '`1' (typographical artifact with backtick), causing pandas to import the column as object. In CSV, these were cleaned to 1 and scaled by (attempts / 11.0)."
+    },
+    "medicines_and_treatments": {
+      "excel_dtype": "int64",
+      "csv_dtype": "float64",
+      "excel_min": 1,
+      "excel_max": 183,
+      "unique_protocols": 182,
+      "normalization_applied": "(protocol_id - 1) / 182.0",
+      "methodological_concern": "'Medicines and treatments' represents nominal treatment protocol IDs (1 to 183). Applying continuous Min-Max scaling treats categorical regimen identifiers as an ordered continuous metric, which is clinically and statistically invalid."
+    }
+  },
+  "normalization_audit": {
+    "normalization_type_confirmed": "Min-Max scaling to [0, 1]",
+    "bounds_source": "Boundary rows / observed patient bounds",
+    "all_features_match_formula": true,
+    "feature_details": {
+      "Female Age": {
+        "min_bound": 20.0,
+        "max_bound": 49.0,
+        "max_residual": 4.827587218869667e-10,
+        "mean_residual": 2.4847586984622083e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Number of attempts": {
+        "min_bound": 0.0,
+        "max_bound": 11.0,
+        "max_residual": 4.5454545682943603e-10,
+        "mean_residual": 1.107636308506077e-10,
+        "is_perfect_min_max_match": true
+      },
+      "AMH": {
+        "min_bound": 0.013,
+        "max_bound": 482.1,
+        "max_residual": 4.963232777487037e-08,
+        "mean_residual": 5.050519151522645e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Medicines and treatments": {
+        "min_bound": 1.0,
+        "max_bound": 183.0,
+        "max_residual": 4.945054947122496e-10,
+        "mean_residual": 2.0467252109211685e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Oocyte Maturity MII": {
+        "min_bound": 0.0,
+        "max_bound": 52.0,
+        "max_residual": 4.6153847410579374e-10,
+        "mean_residual": 2.445076926343992e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Oocyte Maturity MI": {
+        "min_bound": 0.0,
+        "max_bound": 32.0,
+        "max_residual": 0.0,
+        "mean_residual": 0.0,
+        "is_perfect_min_max_match": true
+      },
+      "Oocyte Maturity others": {
+        "min_bound": 0.0,
+        "max_bound": 65.0,
+        "max_residual": 4.6153847410579374e-10,
+        "mean_residual": 1.967076929676459e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Male Age": {
+        "min_bound": 19.0,
+        "max_bound": 57.0,
+        "max_residual": 4.736842584840417e-10,
+        "mean_residual": 2.441578990125537e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Sperm count": {
+        "min_bound": 0.0,
+        "max_bound": 115.0,
+        "max_residual": 4.347826086955979e-08,
+        "mean_residual": 2.6620869361305043e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Sperm motility": {
+        "min_bound": 0.0,
+        "max_bound": 89.0,
+        "max_residual": 4.8314606741574665e-08,
+        "mean_residual": 3.0953707789463475e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Sperm morphology": {
+        "min_bound": 0.0,
+        "max_bound": 3.0,
+        "max_residual": 3.33333360913457e-10,
+        "mean_residual": 2.555333338156128e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Number of fertilized eggs": {
+        "min_bound": 0.0,
+        "max_bound": 35.0,
+        "max_residual": 4.2857151161257434e-10,
+        "mean_residual": 2.30257141353718e-10,
+        "is_perfect_min_max_match": true
+      },
+      "Embryo Grade 1": {
+        "min_bound": 0.0,
+        "max_bound": 32.0,
+        "max_residual": 0.0,
+        "mean_residual": 0.0,
+        "is_perfect_min_max_match": true
+      },
+      "Embryo Grade 2": {
+        "min_bound": 0.0,
+        "max_bound": 32.0,
+        "max_residual": 0.0,
+        "mean_residual": 0.0,
+        "is_perfect_min_max_match": true
+      },
+      "Embryo Grade 3": {
+        "min_bound": 0.0,
+        "max_bound": 11.0,
+        "max_residual": 4.5454545682943603e-10,
+        "mean_residual": 1.7854544953621597e-11,
+        "is_perfect_min_max_match": true
+      },
+      "Embryo Grade 4": {
+        "min_bound": 0.0,
+        "max_bound": 9.0,
+        "max_residual": 4.4444442570679144e-10,
+        "mean_residual": 1.5333332353817396e-12,
+        "is_perfect_min_max_match": true
+      },
+      "Number of embryos": {
+        "min_bound": 0.0,
+        "max_bound": 8.0,
+        "max_residual": 0.0,
+        "mean_residual": 0.0,
+        "is_perfect_min_max_match": true
+      },
+      "frezzing": {
+        "min_bound": 0.0,
+        "max_bound": 25.0,
+        "max_residual": 0.0,
+        "mean_residual": 0.0,
+        "is_perfect_min_max_match": true
+      }
+    },
+    "data_leakage_implication": "Global min-max scaling was performed on the entire dataset prior to any train-test split, introducing dataset-wide scaling leakage. In downstream ML modeling, scaling must be fitted strictly within training folds."
+  },
+  "order_agnostic_record_matching": {
+    "multiset_order_agnostic_equality": true,
+    "sequential_row_order_identical": true,
+    "unique_multiset_signatures": 3800,
+    "explanation": "Order-agnostic multiset comparison of all 18 normalized numeric features plus the implantation target confirms that the two files contain identical patient record feature distributions, independently of row ordering."
+  },
+  "patient_and_cycle_candidates": {
+    "biological_signature_features": [
+      "Female Age",
+      "Male Age",
+      "AMH",
+      "Sperm count",
+      "Sperm motility",
+      "Sperm morphology"
+    ],
+    "candidate_multi_cycle_couple_clusters": 1457,
+    "total_records_in_multi_cycle_clusters": 3058,
+    "cluster_size_distribution": {
+      "2": 1350,
+      "3": 70,
+      "4": 37
+    },
+    "records_with_identical_clinical_features_excluding_date": 1474,
+    "ethical_and_scientific_safeguard": "Without unique patient identifiers, shared biological baseline features suggest repeat treatment cycles or longitudinal visits, but cannot establish definitive patient identity. Downstream modeling must avoid group-leakage assumptions while acknowledging potential clustering in error analysis."
+  },
+  "recommendation": "RECOMMENDATION: Use 'data/raw/Dataset Clean.xlsx' (rows 0 to 4999) as the sole authoritative source for subsequent analysis and modeling. Rows 5000 and 5001 must be dropped as they are synthetic min-max boundary rows. 'Normalized CSV.csv' must NOT be used because it has suffered severe information degradation: calendar years were stripped from dates (creating 5 artificial duplicate pairs), character encoding was corrupted (\u03b2-HCG -> ?-HCG), 'Non-return of embryos' was silently imputed to 0.0, nominal protocol codes were improperly scaled as continuous metrics, and global min-max scaling was baked in prior to train-test splitting."
+}

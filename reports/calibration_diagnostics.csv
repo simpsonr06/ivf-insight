@@ -1,0 +1,13 @@
+Cohort,Scenario,Model,Brier_Score,ECE_10_Bins,MCE_10_Bins,Calibration_Intercept,Calibration_Slope,Systematic_Bias,Spread_Assessment
+Full-Cycle Cohort,Scenario A (Baseline),Logistic Regression,0.2342,0.0631,0.413,0.2677,1.0975,Systematically Pessimistic / Underconfident (Observed > Predicted),Ideal Spread (Slope ≈ 1.0)
+Full-Cycle Cohort,Scenario A (Baseline),Random Forest,0.2149,0.088,0.1856,0.2855,1.522,Systematically Pessimistic / Underconfident (Observed > Predicted),Underconfident Spread (Slope > 1.1)
+Full-Cycle Cohort,Scenario B (Post-Retrieval),Logistic Regression,0.2077,0.0972,0.2061,0.4197,1.0528,Systematically Pessimistic / Underconfident (Observed > Predicted),Ideal Spread (Slope ≈ 1.0)
+Full-Cycle Cohort,Scenario B (Post-Retrieval),Random Forest,0.1879,0.099,0.1516,0.4619,1.185,Systematically Pessimistic / Underconfident (Observed > Predicted),Underconfident Spread (Slope > 1.1)
+Full-Cycle Cohort,Scenario C (Pre-Transfer),Logistic Regression,0.1582,0.1318,0.2639,0.901,1.5184,Systematically Pessimistic / Underconfident (Observed > Predicted),Underconfident Spread (Slope > 1.1)
+Full-Cycle Cohort,Scenario C (Pre-Transfer),Random Forest,0.1383,0.135,0.2716,0.816,1.426,Systematically Pessimistic / Underconfident (Observed > Predicted),Underconfident Spread (Slope > 1.1)
+Embryo-Transfer Cohort,Scenario A (Baseline),Logistic Regression,0.1862,0.1426,0.3303,0.8607,0.7761,Systematically Pessimistic / Underconfident (Observed > Predicted),Overconfident Spread (Slope < 1)
+Embryo-Transfer Cohort,Scenario A (Baseline),Random Forest,0.1724,0.1239,0.1699,0.4838,1.2842,Systematically Pessimistic / Underconfident (Observed > Predicted),Underconfident Spread (Slope > 1.1)
+Embryo-Transfer Cohort,Scenario B (Post-Retrieval),Logistic Regression,0.1851,0.1522,0.2494,0.8859,0.8407,Systematically Pessimistic / Underconfident (Observed > Predicted),Overconfident Spread (Slope < 1)
+Embryo-Transfer Cohort,Scenario B (Post-Retrieval),Random Forest,0.1756,0.1489,0.2451,0.7523,1.1399,Systematically Pessimistic / Underconfident (Observed > Predicted),Underconfident Spread (Slope > 1.1)
+Embryo-Transfer Cohort,Scenario C (Pre-Transfer),Logistic Regression,0.1809,0.1525,0.2774,0.8768,0.9213,Systematically Pessimistic / Underconfident (Observed > Predicted),Ideal Spread (Slope ≈ 1.0)
+Embryo-Transfer Cohort,Scenario C (Pre-Transfer),Random Forest,0.1795,0.1596,0.2669,0.9589,0.8664,Systematically Pessimistic / Underconfident (Observed > Predicted),Overconfident Spread (Slope < 1)

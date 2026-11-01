@@ -1,0 +1,51 @@
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments & Package Builds
+.venv/
+env/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Testing & Quality Assurance
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Raw Clinical Datasets (Strictly Protected - Never Commit)
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/README.md
+
+# Processed Intermediate Data
+data/processed/*
+!data/processed/.gitkeep
+
+# Serialized Binary Model Weights (Joblib)
+*.joblib
+
+# Operating System & IDE Artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets & Local Configurations
+.env
+*.pem
+*.key
+*.secret
+
+# Temporary Inspection Dumps
+reports/*_inspection.txt
+

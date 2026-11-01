@@ -1,0 +1,22 @@
+excel_feature,csv_feature,excel_dtype,csv_dtype,excel_missing_all_5002,excel_missing_patient_5000,csv_missing_5000,excel_unique_count,csv_unique_count,normalization_applied,norm_min_bound,norm_max_bound,max_residual,clinical_variable_type,reconciliation_notes
+Female Age,Female Age,int64,float64,0,0,0,30,30,"Min-Max [0, 1]",20.0,49.0,4.83e-10,Baseline Demographic (Continuous/Integer),"Min 20, Max 49; scaled as (age - 20) / 29."
+Number of attempts,Number of attempts,object,float64,0,0,0,11,10,"Min-Max [0, 1]",0.0,11.0,4.55e-10,Treatment History (Discrete Count),Typo '`1' in 2 rows; scaled as attempts / 11.
+AMH,AMH,float64,float64,0,0,0,849,849,"Min-Max [0, 1]",0.013,482.1,4.96e-08,Endocrine Biomarker (Continuous),"Anti-Müllerian Hormone (unit not specified in source dataset); min 0.013, max 482.1."
+Medicines and treatments,Medicines and treatments,int64,float64,0,0,0,182,182,"Min-Max [0, 1]",1.0,183.0,4.95e-10,Clinical Regimen (Nominal Protocol ID),182 discrete regimen IDs inappropriately scaled as continuous metric.
+Egg retrieval date,Egg retrieval date,datetime64[ns],float64,2,0,0,1400,665,Custom (day/365),,,,Temporal Timestamp (Date),Year stripped; reduced to (day-of-year - 1)/365; created 5 duplicate pairs.
+Oocyte Maturity MII,Oocyte Maturity MII,int64,float64,0,0,0,36,36,"Min-Max [0, 1]",0.0,52.0,4.62e-10,Embryology Lab (Discrete Count),"Maturity grading counts (MII, MI, others)."
+Oocyte Maturity MI,Oocyte Maturity MI,int64,float64,0,0,0,18,18,"Min-Max [0, 1]",0.0,32.0,0.00e+00,Embryology Lab (Discrete Count),"Maturity grading counts (MII, MI, others)."
+Oocyte Maturity others,Oocyte Maturity others,int64,float64,0,0,0,22,22,"Min-Max [0, 1]",0.0,65.0,4.62e-10,Embryology Lab (Discrete Count),"Maturity grading counts (MII, MI, others)."
+Male Age,Male Age,int64,float64,0,0,0,39,39,"Min-Max [0, 1]",19.0,57.0,4.74e-10,Baseline Demographic (Continuous/Integer),"Min 19, Max 57; scaled as (age - 19) / 38."
+Sperm count,Sperm count,float64,float64,0,0,0,110,110,"Min-Max [0, 1]",0.0,115.0,4.35e-08,Andrology Lab (Continuous/Discrete),Semen analysis parameter: Sperm count.
+Sperm motility,Sperm motility,float64,float64,0,0,0,154,154,"Min-Max [0, 1]",0.0,89.0,4.83e-08,Andrology Lab (Continuous/Discrete),Semen analysis parameter: Sperm motility.
+Sperm morphology,Sperm morphology,float64,float64,0,0,0,27,27,"Min-Max [0, 1]",0.0,3.0,3.33e-10,Andrology Lab (Continuous/Discrete),Semen analysis parameter: Sperm morphology.
+Number of fertilized eggs,Number of fertilized eggs,int64,float64,0,0,0,34,34,"Min-Max [0, 1]",0.0,35.0,4.29e-10,Embryology Metric (Count),"Fertilized oocyte count; min 0, max 35."
+Embryo Grade 1,Embryo Grade 1,int64,float64,0,0,0,28,28,"Min-Max [0, 1]",0.0,32.0,0.00e+00,Embryology Morphological Score (Count),Graded embryo count: Embryo Grade 1.
+Embryo Grade 2,Embryo Grade 2,int64,float64,0,0,0,16,16,"Min-Max [0, 1]",0.0,32.0,0.00e+00,Embryology Morphological Score (Count),Graded embryo count: Embryo Grade 2.
+Embryo Grade 3,Embryo Grade 3,int64,float64,0,0,0,12,12,"Min-Max [0, 1]",0.0,11.0,4.55e-10,Embryology Morphological Score (Count),Graded embryo count: Embryo Grade 3.
+Embryo Grade 4,Embryo Grade 4,int64,float64,0,0,0,7,7,"Min-Max [0, 1]",0.0,9.0,4.44e-10,Embryology Morphological Score (Count),Graded embryo count: Embryo Grade 4.
+Number of embryos,Number of embryos,int64,float64,0,0,0,9,9,"Min-Max [0, 1]",0.0,8.0,0.00e+00,Embryology Metric (Count),"Total embryos available; min 0, max 8."
+frezzing,frezzing,int64,float64,0,0,0,22,22,"Min-Max [0, 1]",0.0,25.0,0.00e+00,Embryology Cryopreservation (Count),"Cryopreserved (frozen) embryo count; min 0, max 25."
+β-HCG,?-HCG,object,float64,2,0,0,1276,1018,Ratio / 6800,,,,Post-Treatment Biomarker (Qualitative/Quantitative),Header corrupted to '?-HCG'; scaled by /6800; 'Non-return' encoded as 0.0.
+Output(failed implantation or successful implantation),Output (Output(failed implantation or successful implantation),float64,int64,2,0,0,2,2,None,,,,Clinical Outcome (Binary Classification Target),"100% agreement on rows 0..4999 (0: 2508, 1: 2492); CSV has duplicate header syntax."

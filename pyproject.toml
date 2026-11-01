@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ivf-insight"
+version = "0.1.0"
+description = "Reproducible clinical data analysis, predictive modelling, and prospective temporal validation of IVF cycle outcomes"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Simpson R." }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License"
+]
+dependencies = [
+    "pandas>=2.1,<3.0",
+    "numpy>=1.26,<3.0",
+    "scipy>=1.11,<2.0",
+    "statsmodels>=0.14,<1.0",
+    "scikit-learn>=1.4,<2.0",
+    "matplotlib>=3.8,<4.0",
+    "openpyxl>=3.1,<4.0",
+    "joblib>=1.3,<2.0",
+    "markdown>=3.5"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9.0",
+    "ipython>=8.20"
+]
+
+[project.scripts]
+ivf-insight = "ivf_insight.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,9 @@
+Model_Specification,Female_Age_Beta_Std,Female_Age_SE,Female_Age_P_Value,Female_Age_OR_Std,Female_Age_OR_95_CI,Male_Age_Beta_Std,Male_Age_P_Value,Male_Age_OR_Std
+Transfer Cohort — Unadjusted Female Age,0.1336,0.0397,0.0007700154376023736,1.1429,"[1.057, 1.235]",,,
+Transfer Cohort — Unadjusted Male Age,,,,,N/A,-0.1835,4.432237774705441e-06,0.8323
+Transfer Cohort — Female Age + Male Age,0.3504,0.051,6.6204198958457315e-12,1.4196,"[1.284, 1.569]",-0.3846,8.589683670335033e-14,0.6807
+Transfer Cohort — Scenario A (Baseline),0.3326,0.0515,1.039639628366113e-10,1.3946,"[1.261, 1.543]",-0.3588,8.21674804913238e-12,0.6985
+Transfer Cohort — Scenario B (Post-Retrieval),0.2881,0.0529,5.061195144438612e-08,1.3339,"[1.203, 1.480]",-0.2713,6.745053560725999e-07,0.7624
+Transfer Cohort — Scenario C (Pre-Transfer),0.3062,0.0538,1.243257480775177e-08,1.3583,"[1.222, 1.509]",-0.2834,4.109125687814108e-07,0.7532
+Full-Cycle Cohort — Unadjusted Female Age,0.0594,0.0337,0.07778295194530814,1.0612,"[0.993, 1.134]",,,
+Full-Cycle Cohort — Scenario C (Pre-Transfer),0.2573,0.0488,1.3305676723292313e-07,1.2934,"[1.175, 1.423]",-0.2559,4.09203392231402e-07,0.7742

@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you utilize this codebase or research findings in your research, please cite both the software repository and the underlying source dataset."
+title: "IVF Insight: Exploratory Clinical Data Analysis, Predictive Modelling and Temporal Validation of IVF Treatment-Cycle Outcomes"
+version: 0.1.0
+date-released: 2026-11-01
+license: MIT
+authors:
+  - family-names: "R"
+    given-names: "Simpson"
+repository-code: "https://github.com/your-username/ivf-insight"
+abstract: "A rigorous, reproducible clinical data science and machine learning investigation into assisted reproductive technology (ART) cycle outcomes using an authoritative cohort of 5,000 candidate treatment cycles. Incorporates strict prospective chronological validation (2024-01-01 cutoff), milestone-based feature governance, multivariable odds ratio estimation, canonical calibration auditing, and deconstruction of the Conflation Illusion and Female Age suppression effects."
+keywords:
+  - "in-vitro-fertilization"
+  - "clinical-prediction-models"
+  - "temporal-validation"
+  - "calibration-drift"
+  - "reproducible-research"
+  - "biomedical-data-science"
+references:
+  - type: data
+    title: "Comprehensive Dataset Profile of In Vitro Fertilization (IVF) Clinical and Embryological Data"
+    authors:
+      - family-names: "Maghdid"
+        given-names: "Shadman"
+      - family-names: "Rashid"
+        given-names: "Tarik A."
+      - family-names: "Askar"
+        given-names: "Sangar"
+    year: 2026
+    version: "1"
+    publisher:
+      name: "Mendeley Data"
+    doi: "10.17632/hd8yy6gzc5.1"
+    license: "CC-BY-4.0"
